@@ -7,9 +7,16 @@ export default function Projects() {
   useEffect(() => {
     const script = document.createElement("script");
     script.type = "module";
-    script.src = "https://unpkg.com/@splinetool/viewer@1.11.4/build/spline-viewer.js";
+    script.src =
+      "https://unpkg.com/@splinetool/viewer@1.11.4/build/spline-viewer.js";
     document.head.appendChild(script);
-    return () => document.head.removeChild(script);
+
+    // FIX: cleanup harus return void, bukan return value
+    return () => {
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
   }, []);
 
   return (
@@ -30,7 +37,7 @@ export default function Projects() {
 
       {/* 🔹 Content: 3D Model + Teks */}
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        {/* KIRI → 3D Model — DI BELAKANG */}
+        {/* KIRI → 3D Model */}
         <div className="flex justify-center md:justify-end -mx-4 md:-mx-8 pointer-events-none">
           <div className="w-full max-w-5xl">
             <div className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] rounded-3xl overflow-visible">
@@ -44,19 +51,24 @@ export default function Projects() {
                   width: "140%",
                   height: "140%",
                   maxWidth: "none",
-                  pointerEvents: "auto", // Hanya 3D yang bisa diinteraksi
+                  pointerEvents: "auto",
                 }}
               />
             </div>
           </div>
         </div>
 
-        {/* KANAN → Teks + Tombol — DI DEPAN */}
+        {/* KANAN → Text */}
         <div className="flex flex-col justify-center h-full space-y-6 relative z-10">
           <h3 className="text-2xl font-semibold">Project Showcase</h3>
           <p className="text-gray-400 leading-relaxed">
-            Beberapa project yang saya kerjakan merupakan sebuah Study Case, Tugas Kuliah, Permintaan Client, dan Project Mandiri. Selain yang ada pada halaman (Projects) ini, saya juga memiliki beberapa project lain seperti instalasi perangkat lunak, instalasi sistem operasi windows, dan troubleshooting pada perangkat komputer.
+            Beberapa project yang saya kerjakan merupakan sebuah Study Case,
+            Tugas Kuliah, Permintaan Client, dan Project Mandiri. Selain yang
+            ada pada halaman (Projects) ini, saya juga memiliki beberapa project
+            lain seperti instalasi perangkat lunak, instalasi sistem operasi
+            windows, dan troubleshooting pada perangkat komputer.
           </p>
+
           <div className="flex justify-start items-center py-4">
             <Link
               href="/project-detail"
