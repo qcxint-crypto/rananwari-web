@@ -27,9 +27,9 @@ export default function Home() {
     <main className="bg-black text-white">
       {/* langkah 1: nyalakan 2 komponen basic dulu */}
       <Navbar />
-      <Hero />
       <Contact />
-      {/* <Contact /> */}
+      <Hero />
+      <Profile />
       {/* <Profile /> */}
       {/* <Skills /> */}
       {/* <Projects /> */}
@@ -37,4 +37,5 @@ export default function Home() {
     </main>
   );
 }
+
 
