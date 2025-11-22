@@ -58,12 +58,12 @@ export default function Profile() {
         >
           <div className="bg-black text-white p-3 rounded-xl flex gap-6 items-center">
             
-            {/* GitHub */}
+            {/* Link */}
             <a
-              href="https://github.com/qcxint-crypto/rananwari-web/"
+              href="https://lynk.id/rananwari"
               target="_blank"
             >
-              <FaGithub />
+              <FaLink />
             </a>
 
             {/* Grabcad – pakai icon lokal */}
@@ -100,3 +100,4 @@ export default function Profile() {
     </section>
   );
 }
+
