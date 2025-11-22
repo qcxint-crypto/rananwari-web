@@ -30,7 +30,7 @@ const nextConfig = {
     ],
   },
   // Pastikan asset statis di-serve dengan benar
-  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://yourdomain.com' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://rananwari-web.vercel.app/' : '',
 };
 
 module.exports = nextConfig;
