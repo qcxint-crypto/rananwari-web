@@ -101,7 +101,7 @@ export default function SplashScreen() {
             },
           }}
         >
-          {"HIDUP JOKOWII".split("").map((char, i) => (
+          {"RAFLI ANWARI NURAFWAN".split("").map((char, i) => (
             <motion.span
               key={i}
               variants={{
@@ -119,3 +119,4 @@ export default function SplashScreen() {
     </AnimatePresence>
   );
 }
+
