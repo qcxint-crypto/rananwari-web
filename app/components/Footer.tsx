@@ -9,13 +9,14 @@ export default function Footer() {
         Created with{" "}
         <IoIosHeart className="inline text-cyan-600 mx-1" /> by{" "}
         <a
-          href="https://github.com/princechayon"
+          href="https://github.com/qcxint-crypto/rananwari-web"
           target="_blank"
           className="text-cyan-600 font-medium hover:underline"
         >
-          Wildan
+          Rafli Anwari Nurafwan
         </a>
       </p>
     </footer>
   );
 }
+
