@@ -28,7 +28,7 @@ export default function Home() {
       {/* langkah 1: nyalakan 2 komponen basic dulu */}
       <Navbar />
       <Hero />
-      {/* Contact */}
+      <Contact />
       {/* <Contact /> */}
       {/* <Profile /> */}
       {/* <Skills /> */}
@@ -37,3 +37,4 @@ export default function Home() {
     </main>
   );
 }
+
