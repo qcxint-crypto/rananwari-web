@@ -31,12 +31,13 @@ export default function Home() {
       <Hero />
       <Profile />
       <Skills />
-      {/* <Skills /> */}
+      <Projects />
       {/* <Projects /> */}
       {/* <Footer /> */}
     </main>
   );
 }
+
 
 
 
