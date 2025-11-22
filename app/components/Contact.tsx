@@ -46,27 +46,19 @@ export default function Contact() {
               </div>
               <div className="border-t border-neutral-800 divide-y divide-neutral-800">
                 <a
-                  href="mailto:wildanalghifary618@gmail.com"
+                  href="mailto:job.raflianwari@gmail.com"
                   className="flex items-center gap-3 px-4 py-2 text-sm text-neutral-200 hover:bg-neutral-800 transition"
                 >
                   <Mail className="w-4 h-4 text-blue-400" />
-                  wildanalghifary618@gmail.com
+                  job.raflianwari@gmail.com
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/mochammad-wildan-al-ghifary-6a36322a4/"
+                  href="https://www.linkedin.com/in/rafli-anwari-nurafwan-7b8a49231/"
                   target="_blank"
                   className="flex items-center gap-3 px-4 py-2 text-sm text-neutral-200 hover:bg-neutral-800 transition"
                 >
                   <Linkedin className="w-4 h-4 text-blue-400" />
                   LinkedIn
-                </a>
-                <a
-                  href="https://www.behance.net/wildanal1"
-                  target="_blank"
-                  className="flex items-center gap-3 px-4 py-2 text-sm text-neutral-200 hover:bg-neutral-800 transition"
-                >
-                  <FaBehance className="w-4 h-4 text-blue-400" />
-                  Behance
                 </a>
               </div>
             </motion.div>
@@ -87,3 +79,4 @@ export default function Contact() {
     </div>
   );
 }
+
