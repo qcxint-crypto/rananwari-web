@@ -45,7 +45,7 @@ export default function Profile() {
           Ready to <span className="font-bold">Contribute</span>.
           <br />
           <span className="italic text-sm">
-            "Turning Ideas Into Intuitive Interfaces"
+            "From 3D modeling to real-world functionality"
           </span>
         </motion.p>
 
@@ -100,6 +100,7 @@ export default function Profile() {
     </section>
   );
 }
+
 
 
 
