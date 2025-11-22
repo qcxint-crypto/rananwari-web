@@ -64,10 +64,10 @@ export default function Projects() {
           <h3 className="text-2xl font-semibold">Project Showcase</h3>
           <p className="text-gray-400 leading-relaxed">
             Beberapa project yang saya kerjakan merupakan sebuah Study Case,
-            Tugas Kuliah, Permintaan Client, dan Project Mandiri. Selain yang
-            ada pada halaman (Projects) ini, saya juga memiliki beberapa project
-            lain seperti instalasi perangkat lunak, instalasi sistem operasi
-            windows, dan troubleshooting pada perangkat komputer.
+            Tugas Kuliah, Permintaan Client, dan Project Mandiri. Saya memiliki
+            beberapa project seperti 3D drawing Mesin CNC Router 3 Axis,
+            3D drawing part part Mesin Mesin di Perusahaan tempat magang saya, 
+            Mold and Dies, dan 3D drawing berbagai model Shaft.
           </p>
           <div className="flex justify-start items-center py-4">
             <Link
@@ -82,3 +82,4 @@ export default function Projects() {
     </section>
   );
 }
+
