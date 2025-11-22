@@ -32,11 +32,11 @@ export default function Home() {
       <Profile />
       <Skills />
       <Projects />
-      {/* <Projects /> */}
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 }
+
 
 
 
