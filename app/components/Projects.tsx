@@ -11,7 +11,7 @@ export default function Projects() {
       "https://unpkg.com/@splinetool/viewer@1.11.4/build/spline-viewer.js";
     document.head.appendChild(script);
 
-    // FIX: cleanup harus return void, bukan return value
+    // Cleanup: hapus script saat komponen unmount
     return () => {
       if (document.head.contains(script)) {
         document.head.removeChild(script);
@@ -41,6 +41,7 @@ export default function Projects() {
         <div className="flex justify-center md:justify-end -mx-4 md:-mx-8 pointer-events-none">
           <div className="w-full max-w-5xl">
             <div className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] rounded-3xl overflow-visible">
+              {/* @ts-expect-error: custom Spline web component, type not declared in JSX.IntrinsicElements */}
               <spline-viewer
                 url="https://prod.spline.design/nbEqf50UilycpJRo/scene.splinecode"
                 style={{
@@ -51,14 +52,14 @@ export default function Projects() {
                   width: "140%",
                   height: "140%",
                   maxWidth: "none",
-                  pointerEvents: "auto",
+                  pointerEvents: "auto", // hanya 3D yang bisa diinteraksi
                 }}
               />
             </div>
           </div>
         </div>
 
-        {/* KANAN → Text */}
+        {/* KANAN → Teks + Tombol */}
         <div className="flex flex-col justify-center h-full space-y-6 relative z-10">
           <h3 className="text-2xl font-semibold">Project Showcase</h3>
           <p className="text-gray-400 leading-relaxed">
@@ -68,7 +69,6 @@ export default function Projects() {
             lain seperti instalasi perangkat lunak, instalasi sistem operasi
             windows, dan troubleshooting pada perangkat komputer.
           </p>
-
           <div className="flex justify-start items-center py-4">
             <Link
               href="/project-detail"
