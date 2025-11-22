@@ -18,7 +18,7 @@ export default function Profile() {
         {/* Foto */}
         <div className="w-40 h-40 mx-auto rounded-full overflow-hidden shadow-lg">
           <img
-            src="/skdkemlu.JPG"
+            src="/PP.JPG"
             alt="Profile"
             className="w-full h-full object-cover"
           />
@@ -100,5 +100,6 @@ export default function Profile() {
     </section>
   );
 }
+
 
 
