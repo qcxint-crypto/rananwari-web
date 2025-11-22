@@ -8,15 +8,14 @@ import Profile from "./components/Profile";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
-import SplashScreen from "./components/SplashScreen";
+import SplashScreen from "./components/SplashScreen"; //
 
 export default function Home() {
-  const [loading, setLoading] = useState(false); // <-- MATIKAN SPLASH DULU
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // sementara jangan ada timer, biar langsung render halaman
-    // const timer = setTimeout(() => setLoading(false), 6000);
-    // return () => clearTimeout(timer);
+    const timer = setTimeout(() => setLoading(false), 6000); //Durasi splash
+    return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
@@ -25,7 +24,6 @@ export default function Home() {
 
   return (
     <main className="bg-black text-white">
-      {/* langkah 1: nyalakan 2 komponen basic dulu */}
       <Navbar />
       <Contact />
       <Hero />
@@ -36,8 +34,4 @@ export default function Home() {
     </main>
   );
 }
-
-
-
-
 
