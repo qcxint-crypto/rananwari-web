@@ -11,44 +11,6 @@ interface ModelViewerProps {
   isInModal?: boolean;
 }
 
-function Model({ url, isInModal }: { url: string; isInModal: boolean }) {
-  const { scene } = useGLTF(url);
-
-  useEffect(() => {
-    if (!scene) return;
-
-    // Clone scene untuk isolasi
-    const model = scene.clone();
-
-    const box = new THREE.Box3().setFromObject(model);
-    const size = box.getSize(new THREE.Vector3());
-    const maxDim = Math.max(size.x, size.y, size.z);
-
-    // Skala berbeda: card kecil, modal besar
-    const targetSize = isInModal ? 3.8 : 2.4;
-    const scale = maxDim > 0 ? targetSize / maxDim : 1;
-
-    model.scale.set(scale, scale, scale);
-
-    const center = box.getCenter(new THREE.Vector3());
-    model.position.sub(center.multiplyScalar(scale));
-
-    // Ganti scene dengan model yang sudah diskalakan
-    model.traverse((child) => {
-      if (child instanceof THREE.Mesh) {
-        child.material = child.material.clone();
-      }
-    });
-
-    // Gunakan group untuk menampung
-    const group = new THREE.Group();
-    group.add(model);
-    return <primitive object={group} />;
-  }, [scene, isInModal]);
-
-  return null; // Akan diganti di useEffect
-}
-
 function ModelWrapper({ url, isInModal, autoRotate }: { url: string; isInModal: boolean; autoRotate: boolean }) {
   const [modelNode, setModelNode] = useState<JSX.Element | null>(null);
 
@@ -144,4 +106,5 @@ export const ModelViewerLoading = () => {
       </Canvas>
     </div>
   );
+
 };
