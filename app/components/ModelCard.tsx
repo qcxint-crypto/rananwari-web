@@ -24,7 +24,7 @@ const cardVariants: Variants = {
     y: 0,
     transition: {
       duration: 0.4,
-      ease: [0.25, 0.1, 0.25, 1], // mirip easeInOut
+      // JANGAN pakai ease: "easeOut" lagi kalau tadi masih ada
     },
   },
 };
@@ -105,3 +105,4 @@ export const ModelCard = ({ title, description, tech, modelUrl, onClick }: Model
   );
 
 };
+
