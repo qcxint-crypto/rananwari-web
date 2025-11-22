@@ -1,6 +1,6 @@
 "use client";
 
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaLink, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
 import ScrollVelocity from "./ScrollVelocity";
 
@@ -100,4 +100,5 @@ export default function Profile() {
     </section>
   );
 }
+
 
