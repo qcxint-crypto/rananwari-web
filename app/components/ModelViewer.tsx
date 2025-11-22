@@ -1,8 +1,7 @@
 "use client";
 import { Suspense, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Center } from "@react-three/drei";
-import { Loader2 } from "lucide-react";
+import { OrbitControls, Center } from "@react-three/drei";
 import * as THREE from "three";
 
 interface ModelViewerProps {
@@ -108,3 +107,4 @@ export const ModelViewerLoading = () => {
   );
 
 };
+
