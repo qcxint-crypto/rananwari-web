@@ -1,5 +1,6 @@
 "use client";
-import { Suspense, useState, useEffect } from "react";
+
+import { Suspense, useState, useEffect, type ReactNode } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Center } from "@react-three/drei";
 import * as THREE from "three";
@@ -10,22 +11,42 @@ interface ModelViewerProps {
   isInModal?: boolean;
 }
 
-function ModelWrapper({ url, isInModal, autoRotate }: { url: string; isInModal: boolean; autoRotate: boolean }) {
-  const [modelNode, setModelNode] = useState<JSX.Element | null>(null);
+/* ------------------------------
+   MODEL WRAPPER (LOADER + SCALE)
+------------------------------ */
+function ModelWrapper({
+  url,
+  isInModal,
+  autoRotate,
+}: {
+  url: string;
+  isInModal: boolean;
+  autoRotate: boolean;
+}) {
+  const [modelNode, setModelNode] = useState<ReactNode | null>(null);
 
   useEffect(() => {
     const loadModel = async () => {
-      const { scene } = await import("@/lib/gltf-loader").then(m => m.loadGLTF(url));
+      // Loader kustom GLTF
+      const { loadGLTF } = await import("@/lib/gltf-loader");
+      const { scene } = await loadGLTF(url);
+
+      // Hitung bounding box model
       const box = new THREE.Box3().setFromObject(scene);
       const size = box.getSize(new THREE.Vector3());
       const maxDim = Math.max(size.x, size.y, size.z);
+
+      // Skala otomatis
       const targetSize = isInModal ? 3.8 : 2.4;
       const scale = maxDim > 0 ? targetSize / maxDim : 1;
 
       scene.scale.set(scale, scale, scale);
+
+      // Pusatkan model
       const center = box.getCenter(new THREE.Vector3());
       scene.position.sub(center.multiplyScalar(scale));
 
+      // Simpan model ke state
       setModelNode(<primitive object={scene} />);
     };
 
@@ -34,9 +55,12 @@ function ModelWrapper({ url, isInModal, autoRotate }: { url: string; isInModal: 
 
   if (!modelNode) return <Fallback />;
 
-  return modelNode;
+  return <>{modelNode}</>;
 }
 
+/* ------------------------------
+   FALLBACK SEMENTARA
+------------------------------ */
 function Fallback() {
   return (
     <mesh>
@@ -46,11 +70,18 @@ function Fallback() {
   );
 }
 
-export const ModelViewer = ({ modelUrl, autoRotate = false, isInModal = false }: ModelViewerProps) => {
+/* ------------------------------
+   MAIN COMPONENT: ModelViewer
+------------------------------ */
+export const ModelViewer = ({
+  modelUrl,
+  autoRotate = false,
+  isInModal = false,
+}: ModelViewerProps) => {
   const [key, setKey] = useState(0);
 
   useEffect(() => {
-    setKey(prev => prev + 1);
+    setKey((prev) => prev + 1);
   }, [modelUrl]);
 
   if (!modelUrl) {
@@ -74,14 +105,18 @@ export const ModelViewer = ({ modelUrl, autoRotate = false, isInModal = false }:
           <directionalLight position={[-10, -10, -5]} intensity={0.8} />
 
           <Center>
-            <ModelWrapper url={modelUrl} isInModal={isInModal} autoRotate={autoRotate} />
+            <ModelWrapper
+              url={modelUrl}
+              isInModal={isInModal}
+              autoRotate={autoRotate}
+            />
           </Center>
         </Suspense>
 
         <OrbitControls
           autoRotate={autoRotate}
           autoRotateSpeed={1.2}
-          enableZoom={true}
+          enableZoom
           enablePan={!isInModal}
           minDistance={isInModal ? 1 : 2}
           maxDistance={isInModal ? 12 : 8}
@@ -92,6 +127,9 @@ export const ModelViewer = ({ modelUrl, autoRotate = false, isInModal = false }:
   );
 };
 
+/* ------------------------------
+   Loading Animation Khusus Modal
+------------------------------ */
 export const ModelViewerLoading = () => {
   return (
     <div className="w-full h-full flex items-center justify-center bg-black/70">
@@ -101,10 +139,13 @@ export const ModelViewerLoading = () => {
           <boxGeometry args={[1, 1, 1]} />
           <meshStandardMaterial color="#6c5ce7" />
         </mesh>
-        <OrbitControls autoRotate={true} autoRotateSpeed={5} enableZoom={false} enablePan={false} />
+        <OrbitControls
+          autoRotate
+          autoRotateSpeed={5}
+          enableZoom={false}
+          enablePan={false}
+        />
       </Canvas>
     </div>
   );
-
 };
-
