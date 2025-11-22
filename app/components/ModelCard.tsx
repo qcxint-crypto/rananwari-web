@@ -1,7 +1,7 @@
 "use client";
 import { Suspense } from "react";
 import { ModelViewer, ModelViewerLoading } from "./ModelViewer";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 interface Tech {
   name: string;
@@ -105,4 +105,5 @@ export const ModelCard = ({ title, description, tech, modelUrl, onClick }: Model
   );
 
 };
+
 
