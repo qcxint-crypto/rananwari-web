@@ -1,0 +1,91 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Trebuchet MS", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  
+  --color-retro-green: #39ff14;
+  --color-retro-pink: #ff00ff;
+  --color-retro-blue: #00ffff;
+  --color-retro-yellow: #ffff00;
+  
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0rem; /* Retro style: sharp corners or minimal radius */
+  --background: #050505;
+  --foreground: #ffffff;
+  --primary: #39ff14;
+  --secondary: #ff00ff;
+}
+
+@layer base {
+  * {
+    @apply border-white/10 outline-none;
+  }
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  .crt-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  .crt-effect::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 10;
+    background-size: 100% 3px, 3px 100%;
+    pointer-events: none;
+  }
+  
+  .retro-border {
+    border: 3px solid white;
+    box-shadow: 6px 6px 0px #333;
+  }
+  
+  .retro-border-green {
+    border: 3px solid #39ff14;
+    box-shadow: 6px 6px 0px #1a5c0a;
+  }
+
+  .manga-dots {
+    background-image: radial-gradient(#333 1px, transparent 1px);
+    background-size: 10px 10px;
+  }
+
+  .text-glitch {
+    text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border: 2px solid #000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #39ff14;
+}
